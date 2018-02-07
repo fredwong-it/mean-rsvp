@@ -69,7 +69,7 @@ if (process.env.NODE_ENV !== 'dev') {
 
  // Pass routing to Angular app
  // Don't run in dev
- console.log(process.env);
+ //console.log(process.env);
  if (process.env.NODE_ENV !== 'dev') {
      app.get('*', function (req, res) {
          res.sendFile(path.join(__dirname, '/dist/index.html'));
