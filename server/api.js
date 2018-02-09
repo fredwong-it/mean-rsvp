@@ -101,7 +101,7 @@ module.exports = function(app, config) {
   });
 
   // GET RSVPs by event ID
-  app.get('api/events/:eventId/rsvps', jwtCheck, (req, res) => {
+  app.get('api/event/:eventId/rsvps', jwtCheck, (req, res) => {
     Rsvp.find({ eventId: req.params.eventId }, (err, rsvps) => {
       let rsvpsArr = [];
 
