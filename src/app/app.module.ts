@@ -12,6 +12,8 @@ import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './pages/callback/callback.component';
 import { ApiService } from './core/api.service';
 import { LoadingComponent } from './core/loading.component';
+import { DatePipe } from '@angular/common';
+import { UtilsService } from './core/utils.service';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { LoadingComponent } from './core/loading.component';
   providers: [
     Title,
     AuthService,
-    ApiService
+    ApiService,
+    DatePipe,
+    UtilsService
   ],
   bootstrap: [AppComponent]
 })
