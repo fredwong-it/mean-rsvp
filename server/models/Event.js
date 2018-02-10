@@ -10,7 +10,7 @@
  const Schema = mongoose.Schema;
 
  const eventSchema = new Schema({
-  title: { tpye: String, required: true },
+  title: { type: String, required: true },
   location: { type: String, required: true },
   startDatetime: { type: Date, required: true },
   endDatetime: { type: Date, required: true },
