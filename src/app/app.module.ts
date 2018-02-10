@@ -15,6 +15,7 @@ import { LoadingComponent } from './core/loading.component';
 import { DatePipe } from '@angular/common';
 import { UtilsService } from './core/utils.service';
 import { FilterSortService } from './core/filter-sort.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FilterSortService } from './core/filter-sort.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     Title,
