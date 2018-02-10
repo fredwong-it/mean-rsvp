@@ -14,6 +14,7 @@ import { ApiService } from './core/api.service';
 import { LoadingComponent } from './core/loading.component';
 import { DatePipe } from '@angular/common';
 import { UtilsService } from './core/utils.service';
+import { FilterSortService } from './core/filter-sort.service';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { UtilsService } from './core/utils.service';
     AuthService,
     ApiService,
     DatePipe,
-    UtilsService
+    UtilsService,
+    FilterSortService
   ],
   bootstrap: [AppComponent]
 })
