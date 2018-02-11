@@ -43,9 +43,9 @@ export class ApiService {
   }
 
   // GET RSVPs by event ID (login required)
-  getRsvpByEventId$(eventId: string): Observable<RsvpModel[]> {
+  getRsvpsByEventId$(eventId: string): Observable<RsvpModel[]> {
     return this.http
-      .get(`${ENV.BASE_API}/event/${eventId}/rsvps`, {
+      .get(`${ENV.BASE_API}event/${eventId}/rsvps`, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)
       })
       .catch(this._handleError);

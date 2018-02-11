@@ -6,7 +6,7 @@ export class RsvpModel {
     public name: string,
     public eventId: string,
     public attending: boolean,
-    public guest?: number,
+    public guests?: number,
     public comments?: string,
     public _id?: string
   ) { }
