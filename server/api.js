@@ -160,8 +160,8 @@ module.exports = function(app, config) {
         return res.status(400).send({ message: 'RSSVP not found' });
       }
 
-      if (rsvp.usedId !== req.user.sub) {
-        return res.status(400).send({ message: 'You cannot edit someone else\'s RSVP.' });
+      if (rsvp.userId !== req.user.sub) {
+        return res.status(401).send({ message: 'You cannot edit someone else\'s RSVP.' });
       }
 
       rsvp.name = req.body.name;
