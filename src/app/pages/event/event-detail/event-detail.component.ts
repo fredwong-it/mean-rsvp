@@ -17,3 +17,4 @@ export class EventDetailComponent {
     public auth: AuthService) { }
 
 }
+
