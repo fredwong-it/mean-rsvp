@@ -24,6 +24,15 @@ export class ApiService {
       .catch(this._handleError);
   }
 
+  // GET list of admin events
+  getAdminEvents$(): Observable<EventModel[]> {
+    return this.http
+      .get(`${ENV.BASE_API}events/admin`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .catch(this._handleError);
+  }
+
   // GET an event by ID (login required)
   getEventById$(id: string): Observable<EventModel> {
     return this.http

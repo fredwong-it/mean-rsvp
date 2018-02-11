@@ -1,3 +1,4 @@
+import { AdminComponent } from './pages/admin/admin.component';
 import { AdminGuard } from './auth/admin.guard';
 import { AuthGuard } from './auth/auth.guard';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,19 @@ const routes: Routes = [
   {
     path: 'callback',
     component: CallbackComponent
+  },
+  {
+    path: 'admin',
+    canActivate: [
+      AuthGuard,
+      AdminGuard
+    ],
+    children: [
+      {
+        path: '',
+        component: AdminComponent
+      }
+    ]
   }
 ];
 

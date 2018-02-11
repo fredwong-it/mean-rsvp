@@ -16,6 +16,7 @@ import { DatePipe } from '@angular/common';
 import { UtilsService } from './core/utils.service';
 import { FilterSortService } from './core/filter-sort.service';
 import { FormsModule } from '@angular/forms';
+import { AdminComponent } from './pages/admin/admin.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     CallbackComponent,
-    LoadingComponent
+    LoadingComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
