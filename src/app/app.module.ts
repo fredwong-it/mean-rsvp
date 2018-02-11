@@ -1,4 +1,5 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -22,6 +23,7 @@ import { EventDetailComponent } from './pages/event/event-detail/event-detail.co
 import { RsvpComponent } from './pages/event/rsvp/rsvp.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,7 @@ import { RsvpComponent } from './pages/event/rsvp/rsvp.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule
