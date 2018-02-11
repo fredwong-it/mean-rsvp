@@ -36,7 +36,7 @@ export class ApiService {
   // GET an event by ID (login required)
   getEventById$(id: string): Observable<EventModel> {
     return this.http
-      .get(`${ENV.BASE_API}/event/${id}`, {
+      .get(`${ENV.BASE_API}event/${id}`, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)
       })
       .catch(this._handleError);

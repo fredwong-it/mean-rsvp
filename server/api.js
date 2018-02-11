@@ -86,17 +86,17 @@ module.exports = function(app, config) {
   });
 
   // GET event by event ID
-  app.get('api/event/:id', jwtCheck, (req, res) => {
+  app.get('/api/event/:id', jwtCheck, (req, res) => {
     Event.findById(req.params.id, (err, event) => {
       if (err) {
         return res.status(500),send({ message: err.message });
       }
 
-      if (!events) {
+      if (!event) {
         return res.status(400).send({ message: 'Event not found.' });
       }
 
-      res.send(events);
+      res.send(event);
     });
   });
 

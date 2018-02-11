@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { CallbackComponent } from './pages/callback/callback.component';
+import { EventComponent } from './pages/event/event.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,13 @@ const routes: Routes = [
         path: '',
         component: AdminComponent
       }
+    ]
+  },
+  {
+    path: 'event/:id',
+    component: EventComponent,
+    canActivate: [
+      AuthGuard
     ]
   }
 ];
