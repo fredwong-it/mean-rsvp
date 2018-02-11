@@ -74,8 +74,8 @@ export class RsvpFormComponent implements OnInit, OnDestroy {
       this.submitRsvpSub = this.api
         .editRsvp$(this.rsvp._id, this.formRsvp)
         .subscribe(
-          data => this._handleSubmitSuccess,
-          err => this._handleSubmitError
+          data => this._handleSubmitSuccess(data),
+          err => this._handleSubmitError(err)
         );
     }
   }
