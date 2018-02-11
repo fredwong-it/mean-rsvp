@@ -119,6 +119,66 @@ module.exports = function(app, config) {
     });
   });
 
+  // POSt a new RSVP
+  app.post('/api/rsvp/new', jwtCheck, (req, res) => {
+    Rsvp.findOne({ eventId: req.body.eventId, userId: req.body.userId }, (err, existingRsvp) => {
+      if (err) {
+        return res.status(500).send({ message: err.message });
+      }
+
+      if (existingRsvp) {
+        return res.status(409).send({ message: 'You have already RSVPed to this event.' });
+      }
+
+      const rsvp = new Rsvp({
+        userId: req.body.userId,
+        name: req.body.name,
+        eventId: req.body.eventId,
+        attending: req.body.attending,
+        guests: req.body.guests,
+        comments: req.body.comments
+      });
+
+      rsvp.save((err) => {
+        if (err) {
+          return res.status(500).send({ message: err.message });
+        }
+
+        res.send(rsvp);
+      });
+    });
+  });
+
+  // PUT (edit) an existing RSVP
+  app.put('/api/rsvp/:id', jwtCheck, (req, res) => {
+    Rsvp.findById(req.params.id, (err, rsvp) => {
+      if (err) {
+        return res.status(500).send({ message: err.message });
+      }
+
+      if (!rsvp) {
+        return res.status(400).send({ message: 'RSSVP not found' });
+      }
+
+      if (rsvp.usedId !== req.user.sub) {
+        return res.status(400).send({ message: 'You cannot edit someone else\'s RSVP.' });
+      }
+
+      rsvp.name = req.body.name;
+      rsvp.attending = req.body.attending;
+      rsvp.guests = req.body.guests;
+      rsvp.comments = req.body.comments;
+
+      rsvp.save((err) => {
+        if (err) {
+          return res.status(500).send({ message: err.message });
+        }
+
+        res.send(rsvp);
+      });
+    });
+  });
+
   // GET API root
   app.get('/api/', (req, res) => {
     res.send('API works');
