@@ -14,7 +14,7 @@ export class ApiService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   private get _authHeader(): string {
-    return `Bearer ${localStorage.getItem('access_toekn')}`;
+    return `Bearer ${localStorage.getItem('access_token')}`;
   }
 
   // GET list of public, future events
