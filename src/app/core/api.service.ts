@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { AuthService } from './../auth/auth.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import { ENV } from './env.config';
 import { EventModel } from './models/event.model';
 import { RsvpModel } from './models/rsvp.model';
@@ -70,7 +71,7 @@ export class ApiService {
   }
 
   private _handleError(err: HttpErrorResponse | any) {
-    const errorMsg = err.message || 'Error: Unable to complete request.';
+    const errorMsg = err.error.message || 'Error: Unable to complete request.';
 
     if (err.message && err.message.indexOf('No JWT present') > -1) {
       this.auth.login();
