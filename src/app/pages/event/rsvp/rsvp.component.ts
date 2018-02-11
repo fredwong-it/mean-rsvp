@@ -26,6 +26,8 @@ export class RsvpComponent implements OnInit, OnDestroy {
   footerTense: string;
   showAllRsvps = false;
   showRsvpsText = 'View All RSVPs';
+  showEditForm = false;
+  editBtnText = 'Edit My RSVP';
 
   constructor(
     public auth: AuthService,
@@ -62,6 +64,11 @@ export class RsvpComponent implements OnInit, OnDestroy {
     this.showRsvpsText = this.showAllRsvps ? 'Hide RSVPs' : 'Show All RSVPs';
   }
 
+  toggleEditForm(setVal?: boolean) {
+    this.showEditForm = setVal !== undefined ? setVal : !this.showEditForm;
+    this.editBtnText = this.showEditForm ? 'Cancel Edit' : 'Edit RSVP';
+  }
+
   private _updateRsvpState() {
     // @TODO: We will add more functionality here later
     this._setUserRsvpGetAttending();
@@ -88,6 +95,16 @@ export class RsvpComponent implements OnInit, OnDestroy {
     });
     this.rsvps = rsvpArr;
     this.totalAttending = guests;
+  }
+
+  onSubmitRsvp(e) {
+    if (e.rsvp) {
+      this.userRsvp = e.rsvp;
+      // @TODO: update _updateRsvpState() method
+      // to support 'changed' parameter:
+      // this._updateRsvpState(true);
+      this.toggleEditForm(false);
+    }
   }
 
   ngOnDestroy() {

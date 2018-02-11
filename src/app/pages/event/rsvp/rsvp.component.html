@@ -30,12 +30,30 @@
         </li>
       </ul>
       <!-- @TODO: Toggle RSVP form (update existing) will go here -->
+      <ul *ngIf="!showEditForm" class="list-group list-group-flush">
+        ...
+      </ul>
+      <div class="card-block">
+        <button
+          class="btn btn-info"
+          [ngClass]="{'btn-info': !showEditForm, 'btn-warning': showEditForm}"
+          (click)="toggleEditForm()">{{editBtnText}}</button>
+
+        <app-rsvp-form
+          *ngIf="showEditForm"
+          [eventId]="eventId"
+          [rsvp]="userRsvp"
+          (submitRsvp)="onSubmitRsvp($event)"></app-rsvp-form>
+      </div>
     </ng-template>
 
     <!-- No RSVP yet -->
     <div *ngIf="!userRsvp" class="card-block">
       <p class="lead">Fill out the form below to respond:</p>
       <!-- @TODO: RSVP form (add new RSVP) will go here -->
+      <app-rsvp-form
+        [eventId]="eventId"
+        (submitRsvp)="onSubmitRsvp($event)"></app-rsvp-form>
     </div>
   </ng-template>
 
