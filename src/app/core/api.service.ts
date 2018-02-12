@@ -14,10 +14,6 @@ export class ApiService {
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  private get _authHeader(): string {
-    return `Bearer ${localStorage.getItem('access_token')}`;
-  }
-
   // GET list of public, future events
   getEvents$(): Observable<EventModel[]> {
     return this.http
@@ -70,6 +66,40 @@ export class ApiService {
       .catch(this._handleError);
   }
 
+  // ----------------------------------------------------------------------------
+  // EVENT API
+  // ----------------------------------------------------------------------------
+
+  // POST new event (admin only)
+  postEvent$(event: EventModel): Observable<EventModel> {
+    return this.http
+      .post(`${ENV.BASE_API}event/new`, event, this._httpOptions)
+      .catch(this._handleError);
+  }
+
+  // PUT existing event (admin only)
+  editEvent$(id: string, event: EventModel): Observable<EventModel> {
+    return this.http
+      .put(`${ENV.BASE_API}event/${id}`, event, this._httpOptions)
+      .catch(this._handleError);
+  }
+
+  // DELETE existing event and all associated RSVPs (admin only)
+  deleteEvent$(id: string): Observable<any> {
+    return this.http
+      .delete(`${ENV.BASE_API}event/${id}`, this._httpOptions)
+      .catch(this._handleError);
+  }
+
+
+  // ----------------------------------------------------------------------------
+  // Private Method
+  // ----------------------------------------------------------------------------
+
+  private get _authHeader(): string {
+    return `Bearer ${localStorage.getItem('access_token')}`;
+  }
+
   private _handleError(err: HttpErrorResponse | any) {
     const errorMsg = err.error.message || 'Error: Unable to complete request.';
 
@@ -78,5 +108,11 @@ export class ApiService {
     }
 
     return Observable.throw(errorMsg);
+  }
+
+  private get _httpOptions(): any {
+    return {
+      headers: new HttpHeaders().set('Authorization', this._authHeader)
+    };
   }
 }
