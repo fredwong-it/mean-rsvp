@@ -23,6 +23,9 @@ import { EventDetailComponent } from './pages/event/event-detail/event-detail.co
 import { RsvpComponent } from './pages/event/rsvp/rsvp.component';
 import { RsvpFormComponent } from './pages/event/rsvp/rsvp-form/rsvp-form.component';
 import { SubmittingComponent } from './core/forms/submitting.component';
+import { CreateEventComponent } from './pages/admin/create-event/create-event.component';
+import { UpdateEventComponent } from './pages/admin/update-event/update-event.component';
+import { EventFormComponent } from './pages/admin/event-form/event-form.component';
 
 
 
@@ -39,7 +42,10 @@ import { SubmittingComponent } from './core/forms/submitting.component';
     EventDetailComponent,
     RsvpComponent,
     RsvpFormComponent,
-    SubmittingComponent
+    SubmittingComponent,
+    CreateEventComponent,
+    UpdateEventComponent,
+    EventFormComponent
   ],
   imports: [
     BrowserModule,
