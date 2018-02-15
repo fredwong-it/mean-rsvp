@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
 import { dateValidator } from './../../../core/forms/date.validator';
 import { DATE_REGEX, TIME_REGEX, stringsToDate } from './../../../core/forms/formUtils.factory';
 import { EventFormService } from './event-form.service';
+import { dateRangeValidator } from '../../../core/forms/date-range.validator';
 
 @Component({
   selector: 'app-event-form',
@@ -118,7 +119,7 @@ export class EventFormComponent implements OnInit, OnDestroy {
           Validators.maxLength(this.ef.timeMax),
           Validators.pattern(TIME_REGEX)
         ]]
-      })
+      }, { validator: dateRangeValidator })
     });
     // Set local property to eventForm datesGroup control
     this.datesGroup = this.eventForm.get('datesGroup');

@@ -7,7 +7,7 @@ class EventModel {
     public startDatetime: Date,
     public endDatetime: Date,
     public viewPublic: boolean,
-    public description?: String,
+    public description?: string,
     public _id?: string
   ) { }
 }
