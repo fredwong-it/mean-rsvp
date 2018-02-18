@@ -197,7 +197,7 @@ export class AuthService {
     // Unsubscribe from previous expiration observable
     this.unscheduleRenewal();
 
-    // Create and subscribe to expeiration observable
+    // Create and subscribe to expiration observable
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     const expiresIn$ = Observable.of(expiresAt)
       .mergeMap(
