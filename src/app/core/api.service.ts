@@ -91,6 +91,12 @@ export class ApiService {
       .catch(this._handleError);
   }
 
+  // GET all events a specific use has RSVPed to (login required)
+  getUserEvents$(userId: string): Observable<EventModel[]> {
+    return this.http
+      .get(`${ENV.BASE_API}events/${userId}`, this._httpOptions)
+      .catch(this._handleError);
+  }
 
   // ----------------------------------------------------------------------------
   // Private Method
