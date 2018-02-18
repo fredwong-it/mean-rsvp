@@ -8,6 +8,7 @@ import { CallbackComponent } from './pages/callback/callback.component';
 import { EventComponent } from './pages/event/event.component';
 import { CreateEventComponent } from './pages/admin/create-event/create-event.component';
 import { UpdateEventComponent } from './pages/admin/update-event/update-event.component';
+import { MyRsvpsComponent } from './pages/my-rsvps/my-rsvps.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,13 @@ const routes: Routes = [
   {
     path: 'event/:id',
     component: EventComponent,
+    canActivate: [
+      AuthGuard
+    ]
+  },
+  {
+    path: 'my-rsvps',
+    component: MyRsvpsComponent,
     canActivate: [
       AuthGuard
     ]
