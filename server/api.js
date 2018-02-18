@@ -274,6 +274,36 @@ module.exports = function(app, config) {
     });
   });
 
+  // Get list of upcoming events user has RSVPed to
+  app.get('/api/events/:userId', jwtCheck, (req, res) => {
+    Rsvp.find({ userId: req.params.userId }, 'eventId', (err, rsvps) => {
+      if (err) {
+        return res.status(500).send({ message: err.message });
+      }
+
+      const _eventIdsArr = rsvps.map(rsvp => rsvp.eventId);
+      const _rsvpEventsProjection = 'title startDatetime endDatetime';
+      let eventsArr = [];
+
+      if (rsvps) {
+        Event.find({ _id: { $in: _eventIdsArr }, startDatetime: { $gte: new Date() } }, 
+        _rsvpEventsProjection, (err, events) => {
+          if (err) {
+            return res.status(500).send({ message: err.message });
+          }
+
+          if (events) {
+            events.forEach(event => {
+              eventsArr.push(event);
+            });
+          }
+
+          res.send(eventsArr);
+        });
+      }
+    });
+  });
+
   // GET API root
   app.get('/api/', (req, res) => {
     res.send('API works');
