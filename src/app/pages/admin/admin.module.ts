@@ -1,3 +1,4 @@
+import { ADMIN_ROUTES } from './admin.routes';
 import { EventFormComponent } from './event-form/event-form.component';
 import { AdminComponent } from './admin.component';
 import { CoreModule } from './../../core/core.module';
@@ -6,11 +7,13 @@ import { CommonModule } from '@angular/common';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { UpdateEventComponent } from './update-event/update-event.component';
 import { DeleteEventComponent } from './update-event/delete-event/delete-event.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    CoreModule
+    CoreModule,
+    RouterModule.forChild(ADMIN_ROUTES)
   ],
   declarations: [
     AdminComponent,

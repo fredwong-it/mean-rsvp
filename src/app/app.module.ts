@@ -1,5 +1,3 @@
-import { AdminModule } from './pages/admin/admin.module';
-import { EventModule } from './pages/event/event.module';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -27,9 +25,7 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     AuthModule.forRoot(),
-    CoreModule.forRoot(),
-    EventModule,
-    AdminModule
+    CoreModule.forRoot()
   ],
   providers: [
   ],
